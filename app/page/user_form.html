@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<!--<script src="../js/main.js"></script>-->
+		<!--<script src="../js/arttmpl.js"></script>-->
+		<script src="../js/doT.js"></script>
+		<script src="../js/ajax.js"></script>
+		<script src="../js/main.js"></script>
+		<!--<script src="../js/mui.js"></script>-->
+		<link rel="stylesheet" href="../css/mui.css" />
+		<link rel="stylesheet" href="../css/base.css" />
+		<title>userForm</title>
+	</head>
+	<body>
+		<header class="mui-bar mui-bar-nav">
+			<a id="close" class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+		    <h1 class="mui-title">登录</h1>
+		</header>
+		<div class="mui-content">
+			<div id='login-form' class="mui-input-group">
+				<div class="mui-input-row">
+					<label>手机号</label>
+					<input id='account' type="text" class="mui-input-clear mui-input" placeholder="请输入账号">
+					<span>手机号已存在</span>
+				</div>
+				<div class="mui-input-row">
+					<label>密码</label>
+					<input id='password' type="password" class="mui-input-clear mui-input" placeholder="请输入密码">
+					<span class="mui-icon mui-icon-eye"></span>
+				</div>
+			</div>
+			<div class="mui-content-padded">
+				<button id='sub' class="mui-btn mui-btn-block mui-btn-danger">登录</button>
+			</div>
+		</div>
+		<!---->
+	</body>
+	<script src="../js/mui.min.js"></script>
+	<script>
+	mui(document).on('tap','#sub',function(){
+		mui.post(base._url+'api/users/userlogin',data,function(data){
+			
+		},'json');
+	})
+	</script>
+</html>

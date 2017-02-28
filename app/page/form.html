@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<script src="../js/doT.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../js/main.js"></script>
+		<link rel="stylesheet" href="../css/mui.css" />
+		<link rel="stylesheet" href="../css/mui.min.css" />
+		<link rel="stylesheet" type="text/css" href="../css/base.css" />
+		<title></title>
+		<style>
+			#account_pwd {
+				display: none;
+			}
+			
+			.mid {
+				width: 80%;
+			}
+		</style>
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title">{{=it.title}}</h1>
+		</header>
+		<div class="mui-content">
+			<div id='login-form' class="mui-input-group">
+				{{? it.type=='paypass'}}
+				<div class="mui-input-row">
+					<label>原密码</label>
+					<input id='old_password' type="password" class="mui-input-clear mui-input" placeholder="初始确认密码默认为空">
+					<span class="mui-icon mui-icon-eye"></span>
+				</div>
+				<div class="mui-input-row">
+					<label>新密码</label>
+					<input id='new_password' type="password" class="mui-input-clear mui-input" placeholder="请输入密码">
+					<span class="mui-icon mui-icon-eye"></span>
+				</div>
+				{{?? it.type=='pay'}}
+				<div class="mui-input-row">
+					<label>付款金额</label>
+					<p class="price">{{=Number(it.total||0).toFixed(2)}}</p>
+				</div>
+				<div class="mui-input-row">
+					<label>付款方式</label>
+					<p id="is_sales">
+						<!--银联转账<input type="radio" value="0" name="is_sales">-->
+						账户资金<input type="radio" value="1" name="is_sales">
+						支付宝<input id="alipay" type="radio" value="2" name="is_sales">
+						微信<input id="wxpay" type="radio" value="3" name="is_sales">
+					</p>
+				</div>
+				<div id="account_pwd" class="mui-input-row">
+					<label>付款密码</label>
+					<input id='password' type="password" class="mui-input-clear mui-input" placeholder="请输入支付密码">
+					<span class="mui-icon mui-icon-eye"></span>
+				</div>
+				{{?? it.type=='ali'}}
+				<div class="mui-input-row">
+					<label>支付宝账号</label>
+					<input id='payment_account' type="text" class="mui-input-clear mui-input" placeholder="请输入支付宝账号">
+					<input id='password' type="hidden" class="mui-input-clear mui-input" placeholder="当前用户（非支付宝）支付密码">
+				</div>
+				<!--<div class="mui-input-row">
+					<label>支付密码</label>
+					<span class="mui-icon mui-icon-eye"></span>
+				</div>-->
+				{{?? it.type=='cash'}}
+				<div class="mui-input-row">
+					<label>提现金额</label>
+					<input id='amount' type="number" class="mui-input-clear mui-input" placeholder="请输入提现金额" max="{{=localStorage.amount}}">
+				</div>
+				<div class="mui-input-row">
+					<label>确认密码</label>
+					<input id='password' type="password" class="mui-input-clear mui-input" placeholder="请输入确认密码">
+				</div>
+				{{?}}
+			</div>
+			<div class="mui-content-padded">
+				<button id='submit' class="mui-btn mui-btn-block mui-btn-danger">{{=it.btn}}</button>
+			</div>
+		</div>
+		
+		<div id="spwd" class="mui-popup mid">
+			<div class="mui-popup-inner">
+				<div class="mui-popup-title">请输入您在伴买伴送设置的确认密码 </div>
+				<!--<div class="mui-popup-text"></div>-->
+				<div class="mui-popup-input">
+					<input type="password" class="mui-input-clear mui-input" placeholder="请输入确认密码">
+				</div>
+			</div>
+			<div class="mui-popup-buttons">
+				<span class="mui-popup-button">取消</span>
+				<span class="mui-popup-button mui-popup-button-bold">确认</span>
+			</div>
+			<!--<div class="mui-popup-inner">
+				<div class="mui-input-row">
+					<label>支付密码</label>
+					<input id='password' type="password" class="mui-input-clear mui-input" placeholder="当前用户（非支付宝）支付密码">
+					<span class="mui-icon mui-icon-eye"></span>
+				</div>
+			</div>-->
+		</div>
+	</body>
+	<script>
+		var p = para(),
+			cur = null,
+			page = {
+				head: {
+					tag: 'header',
+					status: 0
+				},
+				content: {
+					tag: '.mui-content',
+				},
+				m: {
+					title: '商品列表',
+					pictures: ['../img/60x60.gif', '../img/60x60.gif', '../img/60x60.gif'],
+					type: pPar.type || 'goods',
+					detail: {},
+					evaluat: {}
+				}
+			},
+			//initstatus=0,
+			//inHtml=0,//正在插入中
+			content = document.querySelector(page.head.tag),
+			time = null, //计时器
+			m = page.m,
+			url = ''; //提交地址
+		if(p.type == 'paypass') {
+			m.title = '设置账户确认密码';
+			m.btn = '设置'
+		} else if(p.type == 'pay') {
+			m.title = '支付';
+			m.btn = '确认支付'
+		} else if(p.type == 'ali') {
+			m.title = '绑定支付账号';
+			m.btn = '提交'
+		}else if(p.type == 'cash') {
+			m.title = '申请提现';
+			m.btn = '提交'
+		}
+		document.addEventListener('DOMNodeInserted', function(e) {
+			var parent = e.target.parentNode;
+			if(parent == content) {
+
+			}
+		})
+		creFactory(page);
+		//页面数据初始化
+		creHTML(page.head);
+		creHTML(page.content);
+	</script>
+	<script src="../js/mui.js"></script>
+	<script src="../js/muiLoad.js"></script>
+	<script type="text/javascript">
+		var payType = null;
+		var channel = null;
+		var order_sn = null;
+		var cur = null;
+		var spwd=null;
+		// 1. 获取支付通道
+		if(p.type == 'paypass') {
+			url = 'api/cash/set_payment_password';
+		} else if(p.type == 'pay') {
+			url = '';
+			mui(document).on('tap', '#is_sales input[name=is_sales]', function() {
+				var apc = document.getElementById('account_pwd');
+				if(this.value == 2) {
+					payType = 'zfb';
+				}else if(this.value==3){
+					payType ='wx'
+				}
+				if(this.value == 1) {
+					payType = 'account';
+					apc.setAttribute('style', 'display:block;');
+				} else {
+					apc.removeAttribute('style');
+					getChannel(this.id)
+				}
+			});
+		} else if(p.type == 'ali') {
+			url = 'api/cash/set_payment_account';
+			mui(document).on('keydown','#spwd input:focus',function(e){
+				if(e.keyCode==13){
+					iPwd();
+				}
+			});
+			mui(document).on('tap','#spwd .mui-popup-button',function(){
+				spwd.close();
+			});
+			mui(document).on('tap','#spwd .mui-popup-button-bold',function(){
+				iPwd();
+			});
+		}else if(p.type == 'cash') {
+			url = 'api/cash/application';
+		}
+
+		function submit() {
+			var para = {
+				token: localStorage.token
+			};
+			var inps = mui('#login-form .mui-input-row input').each(function() {
+				para[this.id] = this.value;
+			})
+			mui('#login-form input').each(function() {
+				var id = this.id;
+				para[id] = this.value;
+			});
+			mui.post(base._url+url,para,function(data){
+				if(data.code==200){
+					alert(data.datas.msg);
+					mui.back();
+				}else{
+					alert(data.datas.error)
+				}
+				closeWait();
+			},'json');
+		}
+
+		function sPwd(fn) {
+			var des = document.getElementById('spwd');
+			var mask = mui.createMask(function() {
+				des.classList.remove('mui-popup-in');
+			}); //callback为用户点击蒙版时自动执行的回调；
+			mask.show(); //显示遮罩
+			des.classList.add('mui-popup-in');
+			var inp=document.querySelector('#spwd input');
+			inp.value='';
+			inp.focus();
+			return mask;
+		}
+		function iPwd(){
+			var val=document.querySelector('#spwd input').value;
+			document.getElementById('password').value=val;
+			spwd.close();
+			submit();
+		}
+		function getChannel(val) {
+			// 获取支付通道
+			plus.payment.getChannels(function(channels) {
+				channel = null;
+				for(var i in channels){
+					if(val==channels[i].id) channel = channels[i];
+				}
+				if(!channel){
+					mui.toast('支付通道错误');
+				}
+			}, function(e) {
+				alert("获取支付通道失败：" + e.message);
+			});
+		}
+		function pay(channel) {
+			var script = '';
+			var goodslist = cur.order.goodslist;
+			for(var i in goodslist) {
+				script += goodslist[i].goods_name + 'X' + goodslist[i].number;
+			}
+			var para = {
+				goods_desc: script||cur.descript||'ad', //商品描述
+				//total_fee: cur.order.totals, //支付金额
+				order_sn: cur.order_sn //订单编号
+			}
+			var url=base._url+'api/payment/'+channel.id+'_info';
+			//var url='http://www.0416t.com/api/payment/wxpay_info';
+			//para={order_sn:"150537355204972001",goods_desc:"测试"}
+			mui.post(url, para, function(data) {
+				/*statment='service="mobile.securitypay.pay"&partner="2088801273866834"&_input_charset="UTF-8"&out_trade_no="20161212072456"&subject="DCloud项目捐赠"&payment_type="1"&seller_id="payservice@dcloud.io"&total_fee="1"&body="DCloud致力于打造HTML5最好的移动开发工具，包括终端的Runtime、云端的服务和IDE，同时提供各项配套的开发者服务。"&it_b_pay="1d"&notify_url="http%3A%2F%2Fdemo.dcloud.net.cn%2Fpayment%2Falipay%2Fnotify.php"&show_url="http%3A%2F%2Fwww.dcloud.io%2Fhelloh5%2F"&sign="fOUfHrYZ8SQlTazjo3jHuO0ACOH2gq4%2FEf3gH%2BHLVCUqigewAFUyrYd9EXk35YiZMmv1eKbYkRZRJciyWnZElzWY6pIGjy3wsiG0lil6CY2Fax9h0Uwq1BNHmut1MfwSDHKGoq91453yOk2GVOQ%2B3S%2F3JnAv14%2Fbw9023iebDss%3D"&sign_type="RSA"';
+				plus.payment.request(channel,statment,function(e){
+					console.log(e)
+				},function(e){
+					console.log(e)
+				});*/
+				//var d=JSON.parse(data);
+				//d='{"appid":"wx7ddc5fa3760f7319","noncestr":"eAeMooZi3doYCPtL","package":"Sign=WXPay","partnerid":"1426657202","prepayid":"wx201701161342578f6cc0e3720227531386","timestamp":1484545377,"sign":"7F992BD28D86B4790317D950ABF365CB"}'
+				plus.payment.request(channel, data, function(e) {
+					plus.nativeUI.alert("支付成功", function() {
+						bBack(110);
+					});
+				}, function(e) {
+					plus.nativeUI.alert("支付失败：" + e.message, function() {
+						mui.back();
+					});
+				});
+				closeWait();
+			},'text');
+		}
+
+		function account_pay() {
+			var pwd = document.querySelector('#account_pwd input').value;
+			var url = 'api/cash/balance_pay';
+			var para = {
+				amount: cur.order.totals,
+				token: localStorage.token,
+				password: pwd,
+				order_sn: cur.order_sn
+			}
+			mui.post(base._url + url, para, function(data) {
+				console.log(data)
+				if(data.code == 200) {
+					alert(data.datas.msg);
+					bBack(0);
+				} else if(data.code == 400) {
+					alert(data.datas.error);
+				}
+				closeWait();
+			}, 'json');
+		}
+		mui.plusReady(function() {
+			cur = plus.webview.currentWebview();
+			if(cur.order) creHTML(page.content, {
+				total: cur.order.totals
+			});
+		})
+		mui(document).on('tap', '#submit', function() {
+			showWait();
+			if(payType) {
+				if(payType == 'zfb'|| payType=='wx') {
+					if(channel) {
+						pay(channel);
+					}else{
+						mui.toast('支付通道错误');
+						closeWait();
+					}
+				}else if(payType == 'account') {
+					account_pay();
+				}
+			}else if(p.type == 'ali'){
+				var payment_account=document.getElementById('payment_account')
+				if(payment_account.value==''){
+					alert('请输入要绑定的支付宝账号')
+					closeWait();
+					return false;
+				}else{
+					closeWait();
+					spwd=sPwd()
+				}
+			}else {
+				if(p.type=='cash'){
+					var val=document.getElementById('amount').value;
+					if(val>localStorage.amount){
+						mui.toast('你的账户余额不足，最大提现金额为：'+val+'元');
+						closeWait();
+						return;
+					}else if(val==''){
+						mui.toast('提现金额不能为空');
+						closeWait();
+						return;
+					}else if(val<=0){
+						mui.toast('提现金额必需大于0');
+						closeWait();
+						return;
+					}
+				}
+				submit();
+			}
+		});
+	</script>
+
+</html>

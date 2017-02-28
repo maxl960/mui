@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <title></title>
+    <link href="css/mui.min.css" rel="stylesheet"/>
+    <script src="../js/vue.min.js"></script>
+</head>
+<body>
+	<header class="mui-bar mui-bar-nav">
+		<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+		<a id="user_form-login" class="mui-icon mui-icon-mic mui-pull-right"></a>
+		<h1 class="mui-title">首页</h1>
+	</header>
+	<div class="mui-content">
+		<div id="slider" class="mui-slider">
+			<div id="tabs" class="mui-slider-indicator mui-segmented-control mui-segmented-control-inverted">
+				<!--<a class="mui-control-item" href="#item1mobile">待办公文</a>
+				<a class="mui-control-item" href="#item2mobile">已办公文</a>
+				<a class="mui-control-item" href="#item3mobile">全部公文</a>-->
+				<template v-for="a in tab">
+					<a class="mui-control-item" v-text="a.lable" v-bind:href="'#' + a.type">待办公文</a>
+				</template>
+			</div>
+			<div id="sliderProgressBar" class="mui-slider-progress-bar mui-col-xs-4"></div>
+			<div class="mui-slider-group">
+				<template v-for="a in tab">
+					<div v-bind:id="a.type" class="mui-slider-item mui-control-content" style="height:500px;">
+						<div id="scroll1" class="mui-scroll-wrapper">
+							<div class="mui-scroll">
+								<ul class="mui-table-view">
+									<li class="mui-table-view-cell">
+										第一个选项卡子项-1{{a.type}}
+									</li>
+									<li class="mui-table-view-cell">
+										第一个选项卡子项-2
+									</li>
+									<li class="mui-table-view-cell">
+										第一个选项卡子项-3
+									</li>
+									<li class="mui-table-view-cell">
+										第一个选项卡子项-4
+									</li>
+									<li class="mui-table-view-cell">
+										第一个选项卡子项-5
+									</li>
+									<li class="mui-table-view-cell">
+										第一个选项卡子项-6
+									</li>
+									<li class="mui-table-view-cell">
+										第一个选项卡子项-7
+									</li>
+									<li class="mui-table-view-cell">
+										第一个选项卡子项-8
+									</li>
+									<li class="mui-table-view-cell">
+										第一个选项卡子项-9
+									</li>
+									<li class="mui-table-view-cell">
+										第一个选项卡子项-10
+									</li>
+									<li class="mui-table-view-cell">
+										第一个选项卡子项-11
+									</li>
+									<li class="mui-table-view-cell">
+										第一个选项卡子项-12
+									</li>
+									<li class="mui-table-view-cell">
+										第一个选项卡子项-13
+									</li>
+									<li class="mui-table-view-cell">
+										第一个选项卡子项-14
+									</li>
+									<li class="mui-table-view-cell">
+										第一个选项卡子项-15
+									</li>
+									<li class="mui-table-view-cell">
+										第一个选项卡子项-16
+									</li>
+									<li class="mui-table-view-cell">
+										第一个选项卡子项-17
+									</li>
+									<li class="mui-table-view-cell">
+										第一个选项卡子项-18
+									</li>
+									<li class="mui-table-view-cell">
+										第一个选项卡子项-19
+									</li>
+									<li class="mui-table-view-cell">
+										第一个选项卡子项-20
+									</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</template>
+			</div>
+		</div>
+	</div>
+	<nav>
+		<button id="cl">click</button>
+	</nav>
+</body>
+<script src="js/mui.min.js"></script>
+<script src="js/main.js"></script>
+<script>
+	var tab={
+		0: {
+			lable: '全部',
+			status: 100,
+			type: 'all'
+		},
+		1: {
+			lable: '待付款',
+			status: 1,
+			type: 'pay'
+		},
+		2: {
+			lable: '待收货',
+			status: 3,
+			type: 'receipt'
+		},
+		3: {
+			lable: '待评价',
+			status: 4,
+			type: 'evaluate'
+		}
+	}
+	var tabs = new Vue({
+  		el: '#slider',
+  		data: {
+    		tab: {
+    			test: {
+					type: 'hh'
+				},
+				ad: {
+					type: 'ad'
+				}
+    		}
+  		}
+	})
+	tabs.tab=tab
+	var slide=mui('.mui-slider').slider();
+	console.log(slide);
+	slide.gotoItem(1,1000);
+	mui(document).on('tap','#user_form-login',function(){console.log('data')
+		openPage(this.id)
+	})
+</script>
+<script>
+	(function($,doc){
+		/*mui(doc).on('tap','#cl',function(){
+			var slide=mui('.mui-slider').slider();
+			slide.gotoItem(3,0);
+		})*/
+	})(mui,document);
+</script>
+</html>
