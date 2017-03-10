@@ -201,7 +201,9 @@
 					"js/main.js",
 					"js/mui.js",
 					"js/mui.pullToRefresh.js",
-					"js/mui.pullToRefresh.material.js"
+					"js/mui.pullToRefresh.material.js",
+					"css/base.css",
+					"js/ajax.js"
 				],
 				"refer": [
 					"page/user_form.html",

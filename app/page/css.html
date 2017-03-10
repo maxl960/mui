@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			.bin{
+				width:200px;
+				height:200px;
+				background:orange;
+				/*border-radius:50%;*/
+			}
+			.path1 {
+			    -webkit-clip-path: polygon(5px 10px, 16px 3px, 16px 17px);
+			}
+			.cir{
+				width:300px;
+				height:300px;
+				border-radius: 50%;
+				background:#fff;
+				animation: tf 5s;
+				-webkit-animation: tf 5s ease-out;
+				top:12.5%;
+				left:12.5%;
+				position:relative;
+			}
+			.point{
+				width:0px;
+				display:block;
+				border:8px solid transparent;
+				border-bottom:8px solid red;
+				position:relative;
+				left:calc(50% - 4px);
+				left: -webkit-calc(50% - 4px);
+				top:-16px;
+			}
+			@keyframes tf{
+				from {
+					transform: rotateZ(0deg);
+					-webkit-transform: rotateZ(0deg);
+				}
+				to {
+					transform: rotateZ(3600deg);
+					-webkit-transform: rotateZ(3600deg);
+				}
+			}
+			@-webkit-keyframes tf{
+				from {
+					transform: rotateZ(0deg);
+					-webkit-transform: rotateZ(0deg);
+				}
+				to {
+					transform: rotateZ(3600deg);
+					-webkit-transform: rotateZ(3600deg);
+				}
+			}
+			.rect{
+				width:100%;
+				height:0px;
+				padding-bottom:100%;
+				background:#ccc;
+				border-radius:50%;
+			}
+		</style>
+	</head>
+	<body>
+		<!--<div class="bin"></div>-->
+		<div class="rect">
+			<div class="cir">
+				<div class="point"></div>
+			</div>
+		</div>
+	</body>
+	<script>
+		/*function setStyle(obj,attri){
+			getStyle(obj,function(att){
+				for(i in attri){
+					att[i]=attri[i];
+				}
+				initStyle(att,function(sty){
+					obj.setAttribute('style',sty)
+				});
+			});
+		}
+		function getStyle(obj,fn){
+			var str=obj.getAttribute('style');
+			var att={};
+			var arr=str?str.split(';')||[]
+			
+			for(var i in att){
+				var k=arr[i].split(':')[0];
+				var v=arr[i].split(':')[1];
+				if(k) att[k]=v;
+			}
+			if(fn) fn(att)
+			//return att
+		}
+		function initStyle(att,fn){
+			var arr=[];
+			for(var i in att){
+				arr.push(i+':'+arr[i]+';');
+			}
+			var sty=arr.join();console.log(sty)
+			if(fn) fn(sty)
+		}
+		//添加修改JSON
+		function setJson(att,jon){
+			for(var i in jon){
+				att[i]=jon[i]
+			}
+		}
+		//删除JSON
+		function delJson(att,k){
+			delete att[k];
+		}
+		//生成polygon
+		function polygon(arr,fn){
+			var polygon=[]
+			for(i in arr){
+				polygon.push(arr[i][0]+'px '+arr[i][1]+'px')
+			}
+			var p='polygon('+polygon.join(',')+')';
+			if(fn) fn(p);
+		}
+		var bin=document.querySelector('.bin');
+		var path=[[1,2],[50,30],[38,100]]
+		polygon(path,function(p){
+			console.log(p)
+			setStyle(bin,{'-webkit-clip-path':p})
+		});*/
+		
+		function polygon(arr){
+			var polygon=[]
+			for(i in arr){
+				polygon.push(arr[i][0]+'px '+arr[i][1]+'px')
+			}
+			var p='polygon('+polygon.join(',')+')';
+			return p;
+		}
+		var bin=document.querySelector('.bin');
+		var path=[[1,2],[50,30],[38,100]];
+		function cir(x,y,r,star,end){
+			var pi=Math.PI;
+			var deg=2*pi/360;
+			var arr=[[x,y]]
+			/*for(i=0;i<180;i++){
+				var a=x+r*Math.sin(i*deg);
+				var b=y+r*Math.cos(i*deg);
+				arr.push([a,b])
+			}*/
+			var step;
+			if(star>end){
+				step=-1;
+			}else{
+				step=1;
+			}
+			var i=star;
+			var len=(star-end)>0?(star-end)%360:(star-end)%360;
+			console.log((star-end)>0)
+			/*while(i!=end){
+				//if(i>=180) i=-i
+				var a=x+r*Math.sin(i*deg);
+				var b=y+r*Math.cos(i*deg);
+				arr.push([a,b])
+				console.log(i);
+				i++;
+			}*/
+			for(var i=0;i<Math.abs(len);i++){
+				star+=step
+				var a=x+r*Math.sin(star*deg);
+				var b=y+r*Math.cos(star*deg);
+				arr.push([a,b])
+			}
+			return arr;
+		}
+		var arr=cir(100,100,100,10,390)
+		bin.setAttribute('style','-webkit-clip-path:'+polygon(arr));
+	</script>
+</html>

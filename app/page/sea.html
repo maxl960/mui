@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<button>cc</button>
+	</body>
+	<script src="../js/sea.js"></script>
+	<script>
+		/*seajs.config({
+    paths: {
+      'gallery': 'https://a.alipayobjects.com/gallery'
+    },
+    alias: {
+      'jquery': 'gallery/jquery/1.8.2/jquery.js',
+      'seajs-debug': 'https://raw.github.com/seajs/seajs-debug/1.1.1/dist/seajs-debug.js'
+    }
+  })
+
+  seajs.use("./assets/main")*/
+ 	seajs.config({
+ 		alias:{
+ 			'ajax': '../js/ajax',
+ 			'class': '../js/class',
+ 			'mui': '../js/mui'
+ 		}
+ 	})
+ 	/*seajs.config({
+		plugins: ['shim'],
+		alias: {
+			'select': {
+				src: '/select/select.js',
+				exports: function(config) {
+					return new SelectControl(config);
+				}
+			}
+		}
+	})*/
+	seajs.use('../js/test');
+	</script>
+</html>

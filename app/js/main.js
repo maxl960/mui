@@ -1,8 +1,9 @@
 var base={
 	_url	: 'http://10.0.0.130/apps/bmbs/',
-	//_url	: 'http://bmbs.xnbshop.com/'
+	//_url	: 'http://bmbs.xnbshop.com/',
+	url	: 'http://10.0.0.130/test/mui-vue/bin/',
+	//_url	: 'https://www.banmaibansong.com/'
 }
-console.log('main')
 function openPage(_){
 	mui.plusReady(function(){
 		var id=_;//.id;

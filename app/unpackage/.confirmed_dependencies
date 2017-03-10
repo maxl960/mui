@@ -1,44 +1,46 @@
 {
-	"index.html": {
-		"resources": [
-			"js/mui.min.js",
-			"fonts/mui.ttf",
-			"css/mui.min.css",
-			"js/vue.min.js",
-			"js/main.js",
-			"js/mui.js",
-			"js/mui.pullToRefresh.js",
-			"js/mui.pullToRefresh.material.js"
-		],
-		"refer": [
-			"page/user_form.html",
-			"page/pullrefresh_with_tab.html",
-			"page/cart.html"
-		]
-	},
-	"page/user_form.html": {
-		"resources": [
-			"css/mui.css",
-			"js/main.js",
-			"js/mui.min.js",
-			"fonts/mui.ttf"
-		],
-		"refer": []
-	},
-	"page/pullrefresh_with_tab.html": {
-		"resources": [
-			"js/mui.pullToRefresh.js",
-			"js/mui.min.js",
-			"js/mui.pullToRefresh.material.js",
-			"fonts/mui.ttf",
-			"css/mui.min.css"
-		]
-	},
-	"page/cart.html": {
-		"resources": [
-			"js/mui.min.js",
-			"fonts/mui.ttf",
-			"css/mui.css"
-		]
-	}
+  "index.html": {
+    "resources": [
+      "js/mui.min.js",
+      "fonts/mui.ttf",
+      "css/mui.min.css",
+      "js/vue.min.js",
+      "js/main.js",
+      "js/mui.js",
+      "js/mui.pullToRefresh.js",
+      "js/mui.pullToRefresh.material.js",
+      "css/base.css",
+      "js/ajax.js"
+    ],
+    "refer": [
+      "page/user_form.html",
+      "page/pullrefresh_with_tab.html",
+      "page/cart.html"
+    ]
+  },
+  "page/user_form.html": {
+    "resources": [
+      "css/mui.css",
+      "js/main.js",
+      "js/mui.min.js",
+      "fonts/mui.ttf"
+    ],
+    "refer": []
+  },
+  "page/pullrefresh_with_tab.html": {
+    "resources": [
+      "js/mui.pullToRefresh.js",
+      "js/mui.min.js",
+      "js/mui.pullToRefresh.material.js",
+      "fonts/mui.ttf",
+      "css/mui.min.css"
+    ]
+  },
+  "page/cart.html": {
+    "resources": [
+      "js/mui.min.js",
+      "fonts/mui.ttf",
+      "css/mui.css"
+    ]
+  }
 }

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<button id="btn">btn</button>
+	</body>
+	<script>
+		var Class=function(parent){
+			var klass=function(){
+				//this.init.apply(this,arguments)
+				this.init(this);
+			}
+			klass.prototype.init=function(){};
+			if(parent){
+				var subclass=function(){};
+				subclass.prototype=parent.prototype;
+				klass.prototype=new subclass;
+			}
+			klass.fn=klass.prototype;
+			//klass.fn.parent=klass;
+			klass.extend=function(obj){
+				for(var i in obj){
+					klass[i]=obj[i];
+				}
+			}
+			
+			klass.include=function(obj){
+				for(var i in obj){
+					klass.fn[i]=obj[i]
+				}
+			}
+			return klass;
+		}
+		console.log(exports)
+	</script>
+</html>
