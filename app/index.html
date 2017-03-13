@@ -43,16 +43,6 @@
 										</li>
 									</template>
 								</ul>
-								<!--<ul class="mui-table-view mui-grid-view mui-grid-9 glist" data-type="goods" v-for="g in a.goods">
-									<li class="mui-table-view-cell mui-media mui-col-xs-6 mui-col-sm-6" data-type="goods">
-										<a href="">
-											<img id="" src="../img/60x60.gif" alt="" />
-										</a>
-										<p class="title" v-text="g.goods_name">商品名称</p>
-										<p>拼团省0.00元<span class="mui-pull-right">已团购2.7万件</span></p>
-										<p class="price" v-text="g.price"> 0.00</p>
-									</li>
-								</ul>-->
 							</div>
 						</div>
 					</div>
@@ -64,13 +54,17 @@
 	<script>
 	seajs.config({
  		alias:{
+ 			'main': '../main',
  			'vue': '../vue',
- 			'ajax': '../ajax',
+ 			'ajax': '../model/ajax',
  			'base': '../tool/base',
- 			'vue': '../tool/vue'
+ 			'vue': '../tool/vue',
+ 			'class': '../model/class',
+ 			'model': '../model/model'
  		}
  	});
- 	seajs.use('./js/page/index');
+ 	seajs.use('./js/vm/index');
+ 	seajs.use('./js/view/index');
 	</script>
 	<!--<script src="js/mui.min.js"></script>
 	<script src="js/mui.pullToRefresh.js"></script>

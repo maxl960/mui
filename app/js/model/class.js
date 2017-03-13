@@ -1,5 +1,6 @@
 var Class=function(parent){
 	var klass=function(){
+		this.init.apply(this,arguments);
 	}
 	if(parent){
 		var subclass=function(){};
