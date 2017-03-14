@@ -65,6 +65,7 @@ class CI_Controller {
 	 */
 	public function __construct()
 	{
+    	header("Access-Control-Allow-Origin:*");
 		self::$instance =& $this;
 
 		// Assign all the class objects that were instantiated by the

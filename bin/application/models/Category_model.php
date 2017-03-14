@@ -6,7 +6,6 @@ class Category_model extends CI_Model {
     public $parentid;    //父id
     public $icon;        //图标
     public $is_show;     //是否显示 
-    
     /**
      *添加分类
      *@return integer
@@ -53,6 +52,8 @@ class Category_model extends CI_Model {
      * @return array
      */
     public function get_categorys(){
+        $this->load->database();
+        
     	if($this->is_show == 1){
 			$this->db->where('is_show', 1); 
 		}	
