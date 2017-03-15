@@ -1,5 +1,38 @@
 define(function(require){
-	if(typeof Object.create!='function'){
+	require('class');
+	var Model=new Class;
+	Model.extend({
+		create: function(){
+			return new Model
+		}
+	})
+	Model.include({
+		init: function(){
+			this.record={};
+		},
+		save: function(data){
+			var records=data;
+			var guid=data.id?data.id:Math.guid();
+			this.record[guid]=data;
+		}
+	});
+	return Model;
+	/*var m=function(){
+		//this.record={}
+	}
+	m.prototype={
+		//record: {},
+		init: function(){
+			t
+		},
+		save: function(){
+			var records=this.record;
+			var guid=Math.guid();
+			this.record[guid]=records;
+		}
+	}
+	return m;*/
+	/*if(typeof Object.create!='function'){
 		Object.create=function(o){
 			var F=function(){};
 			F.prototype=o;
@@ -60,5 +93,5 @@ define(function(require){
 			this.record[guid]=record;
 		}
 	})
-	return Model;
+	return Model;*/
 })

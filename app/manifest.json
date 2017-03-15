@@ -203,7 +203,16 @@
 					"js/mui.pullToRefresh.js",
 					"js/mui.pullToRefresh.material.js",
 					"css/base.css",
-					"js/ajax.js"
+					"js/ajax.js",
+					"js/tpl/index.js",
+					"js/sea.js",
+					"js/m/index.js",
+					"js/model/class.js",
+					"js/model/model.js",
+					"js/model/ajax.js",
+					"js/tool/base.js",
+					"js/vm/index.js",
+					"js/tool/vue.js"
 				],
 				"refer": [
 					"page/user_form.html",

@@ -10,7 +10,7 @@ define(function(){
 		var type=type||'get'
 		var xhr=new creXHR();
 		xhr.onreadystatechange=function(){
-			console.log('change');
+			//console.log('change');
 		}
 		xhr.open(type,url,true);
 		//xhr.open('post','https://www.banmaibansong.com/api/goods/get_goodslist',true);

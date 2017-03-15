@@ -9,7 +9,7 @@
 
 	<link rel="stylesheet" href="css/mui.min.css">
 	<link rel="stylesheet" href="css/base.css" />
-	<script src="js/vue.min.js"></script>
+	<!--<script src="js/vue.min.js"></script>-->
 </head>
 
 <body>
@@ -17,7 +17,74 @@
 		<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
 		<h1 class="mui-title">首页</h1>
 	</header>
-	<div class="mui-content">
+	
+	<div class="mui-content" style="height:500px; overflow: hidden; position:relative;">
+		<!--<div id="scroll1" class="mui-scroll-wrapper">
+							<div class="mui-scroll">
+								<ul class="mui-table-view">
+									<li class="mui-table-view-cell">
+										第一个选项卡子项-1{{a.type}}
+									</li>
+									<li class="mui-table-view-cell">
+										第一个选项卡子项-2
+									</li>
+									<li class="mui-table-view-cell">
+										第一个选项卡子项-3
+									</li>
+									<li class="mui-table-view-cell">
+										第一个选项卡子项-4
+									</li>
+									<li class="mui-table-view-cell">
+										第一个选项卡子项-5
+									</li>
+									<li class="mui-table-view-cell">
+										第一个选项卡子项-6
+									</li>
+									<li class="mui-table-view-cell">
+										第一个选项卡子项-7
+									</li>
+									<li class="mui-table-view-cell">
+										第一个选项卡子项-8
+									</li>
+									<li class="mui-table-view-cell">
+										第一个选项卡子项-9
+									</li>
+									<li class="mui-table-view-cell">
+										第一个选项卡子项-10
+									</li>
+									<li class="mui-table-view-cell">
+										第一个选项卡子项-11
+									</li>
+									<li class="mui-table-view-cell">
+										第一个选项卡子项-12
+									</li>
+									<li class="mui-table-view-cell">
+										第一个选项卡子项-13
+									</li>
+									<li class="mui-table-view-cell">
+										第一个选项卡子项-14
+									</li>
+									<li class="mui-table-view-cell">
+										第一个选项卡子项-15
+									</li>
+									<li class="mui-table-view-cell">
+										第一个选项卡子项-16
+									</li>
+									<li class="mui-table-view-cell">
+										第一个选项卡子项-17
+									</li>
+									<li class="mui-table-view-cell">
+										第一个选项卡子项-18
+									</li>
+									<li class="mui-table-view-cell">
+										第一个选项卡子项-19
+									</li>
+									<li class="mui-table-view-cell">
+										第一个选项卡子项-20
+									</li>
+								</ul>
+							</div>
+						</div>-->
 		<div id="slider" class="mui-slider mui-fullscreen">
 			<div id="sliderSegmentedControl" class="mui-scroll-wrapper mui-slider-indicator mui-segmented-control mui-segmented-control-inverted">
 				<div class="mui-scroll">
@@ -26,12 +93,12 @@
 					</template>
 				</div>
 			</div>
-			<div class="mui-slider-group">
+			<div class="mui-slider-group" v-complate="tab">
 				<template v-for="a in tab">
 					<div v-bind:id="a.type" class="mui-slider-item mui-control-content" style="height:500px;">
 						<div id="scroll1" class="mui-scroll-wrapper">
 							<div class="mui-scroll">
-								<ul class="mui-table-view mui-grid-view mui-grid-9 glist">
+								<!--<ul class="mui-table-view mui-grid-view mui-grid-9 glist">
 									<template v-for="g in a.goods">
 										<li class="mui-table-view-cell mui-media mui-col-xs-6 mui-col-sm-6" data-type="goods">
 											<a href="">
@@ -42,6 +109,68 @@
 											<p class="price" v-text="g.price"> 0.00</p>
 										</li>
 									</template>
+								</ul>-->
+								<ul class="mui-table-view">
+									<li class="mui-table-view-cell">
+										第一个选项卡子项-1{{a.type}}
+									</li>
+									<li class="mui-table-view-cell">
+										第一个选项卡子项-2
+									</li>
+									<li class="mui-table-view-cell">
+										第一个选项卡子项-3
+									</li>
+									<li class="mui-table-view-cell">
+										第一个选项卡子项-4
+									</li>
+									<li class="mui-table-view-cell">
+										第一个选项卡子项-5
+									</li>
+									<li class="mui-table-view-cell">
+										第一个选项卡子项-6
+									</li>
+									<li class="mui-table-view-cell">
+										第一个选项卡子项-7
+									</li>
+									<li class="mui-table-view-cell">
+										第一个选项卡子项-8
+									</li>
+									<li class="mui-table-view-cell">
+										第一个选项卡子项-9
+									</li>
+									<li class="mui-table-view-cell">
+										第一个选项卡子项-10
+									</li>
+									<li class="mui-table-view-cell">
+										第一个选项卡子项-11
+									</li>
+									<li class="mui-table-view-cell">
+										第一个选项卡子项-12
+									</li>
+									<li class="mui-table-view-cell">
+										第一个选项卡子项-13
+									</li>
+									<li class="mui-table-view-cell">
+										第一个选项卡子项-14
+									</li>
+									<li class="mui-table-view-cell">
+										第一个选项卡子项-15
+									</li>
+									<li class="mui-table-view-cell">
+										第一个选项卡子项-16
+									</li>
+									<li class="mui-table-view-cell">
+										第一个选项卡子项-17
+									</li>
+									<li class="mui-table-view-cell">
+										第一个选项卡子项-18
+									</li>
+									<li class="mui-table-view-cell">
+										第一个选项卡子项-19
+									</li>
+									<li class="mui-table-view-cell">
+										第一个选项卡子项-20
+									</li>
 								</ul>
 							</div>
 						</div>
@@ -51,7 +180,13 @@
 		</div>
 	</div>
 	<script src="js/sea.js"></script>
+	<!--<script src="js/mui.js"></script>-->
 	<script>
+	/*mui('.mui-scroll-wrapper').scroll({
+		scrollX: false,
+		scrollY:true,
+ 		deceleration:0.0006, 
+	});*/
 	seajs.config({
  		alias:{
  			'main': '../main',
@@ -60,11 +195,20 @@
  			'base': '../tool/base',
  			'vue': '../tool/vue',
  			'class': '../model/class',
- 			'model': '../model/model'
- 		}
+ 			'model': '../model/model',
+ 			'mui': '../mui'
+ 		},
+ 		paths: {
+		    'mod'	: 	'./js/model',
+		    'm'		: 	'./js/m',
+		    'vm'	:	'./js/vm',
+		    'tpl'	:	'./js/tpl',
+		    'obj'	:	'./js/obj'
+		}
  	});
- 	seajs.use('./js/vm/index');
- 	seajs.use('./js/view/index');
+ 	seajs.use('m/index');
+ 	seajs.use('vm/index');
+ 	//seajs.use('mui');
 	</script>
 	<!--<script src="js/mui.min.js"></script>
 	<script src="js/mui.pullToRefresh.js"></script>

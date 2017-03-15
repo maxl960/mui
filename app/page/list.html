@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
     <title></title>
-    <link href="css/mui.min.css" rel="stylesheet"/>
+    <link href="../css/mui.min.css" rel="stylesheet"/>
     <script src="../js/vue.min.js"></script>
 </head>
 <body>
@@ -102,8 +102,8 @@
 		<button id="cl">click</button>
 	</nav>
 </body>
-<script src="js/mui.min.js"></script>
-<script src="js/main.js"></script>
+<script src="../js/mui.min.js"></script>
+<script src="../js/main.js"></script>
 <script>
 	var tab={
 		0: {
@@ -154,6 +154,11 @@
 			var slide=mui('.mui-slider').slider();
 			slide.gotoItem(3,0);
 		})*/
+		mui('.mui-scroll-wrapper').scroll({
+			scrollX: false,
+			scrollY:true,
+	 		deceleration:0.0006, 
+		});
 	})(mui,document);
 </script>
 </html>

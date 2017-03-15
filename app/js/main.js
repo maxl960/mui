@@ -28,3 +28,8 @@ Math.guid=function(){
 	 	return v.toString(16);  
 	}).toUpperCase();
 }
+function ajax_post($,url,para,fn){
+	$.post(base.url+url,para,function(data){
+		if(fn) fn(data)
+	},'json');
+}
