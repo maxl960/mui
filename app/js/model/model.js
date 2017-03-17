@@ -1,5 +1,5 @@
 define(function(require){
-	require('class');
+	/*require('class');
 	var Model=new Class;
 	Model.extend({
 		create: function(){
@@ -14,9 +14,12 @@ define(function(require){
 			var records=data;
 			var guid=data.id?data.id:Math.guid();
 			this.record[guid]=data;
+		},
+		show: function(){
+			console.log(this.record)
 		}
 	});
-	return Model;
+	return Model;*/
 	/*var m=function(){
 		//this.record={}
 	}
@@ -32,7 +35,7 @@ define(function(require){
 		}
 	}
 	return m;*/
-	/*if(typeof Object.create!='function'){
+	if(typeof Object.create!='function'){
 		Object.create=function(o){
 			var F=function(){};
 			F.prototype=o;
@@ -93,5 +96,5 @@ define(function(require){
 			this.record[guid]=record;
 		}
 	})
-	return Model;*/
+	return Model;
 })

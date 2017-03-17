@@ -22,6 +22,7 @@ var Class=function(parent){
 	}
 	return klass;
 }
+exports=Class;
 /*var Person=new Class;
 
 var person=new Person;

@@ -1,8 +1,13 @@
 define(function(require,exports,module){
-	/*var ajax=require('mui');
-	var btn=mui('button');*/
-	//require('class');
-	var p=new Class;
-	var per=new p;
-	console.log(per)
+	var obj={}
+	Object.defineProperties(obj,{
+		hello: {
+			set: function(val){
+				document.getElementById('b').innerHTML=val;
+			}
+		}
+	})
+	document.addEventListener('keyup',function(e){
+		obj.hello=e.target.value;
+	})
 })

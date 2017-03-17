@@ -1,6 +1,6 @@
 define(function(require,exports,module){
 	require('vue');
-	Vue.directive('complate',{
+	/*Vue.directive('complate',{
 		update: function(el,binding,vnode){
 			mui('.mui-scroll-wrapper').scroll({
 				scrollX: false,
@@ -22,5 +22,32 @@ define(function(require,exports,module){
     		}
   		}
 	});
-	return tabs;
+	return tabs;*/
+	var nav={
+		index: {
+			label: '首页'
+		},
+		active: {
+			label: '活动'
+		},
+		shop: {
+			label: '购物'
+		},
+		my: {
+			label: '我的'
+		}
+	}
+	Vue.component('navbar',{
+		props: ['nav','test'],
+		template: '#nav-tpl',
+	})
+	var page=new Vue({
+		el: '#page',
+		data: {
+			cateory: {},
+			nav: nav,
+			test: 'index'
+		}
+	});
+	console.log(JSON.parse(JSON.stringify(nav)))
 })
