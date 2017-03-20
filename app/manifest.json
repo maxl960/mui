@@ -212,7 +212,8 @@
 					"js/model/ajax.js",
 					"js/tool/base.js",
 					"js/vm/index.js",
-					"js/tool/vue.js"
+					"js/tool/vue.js",
+					"js/model/page.js"
 				],
 				"refer": [
 					"page/user_form.html",

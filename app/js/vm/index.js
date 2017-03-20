@@ -1,9 +1,15 @@
 define(function(require){
 	require('mui');
-	console.log(mui('.mui-scroll-wrapper'))
-	mui('.mui-scroll-wrapper').scroll({
+	mui('#tabs').scroll({
+		scrollX: true,
+		scrollY:false,
+ 		deceleration:0.0006, 
+	});
+	//console.log(mui('#tabs'))
+	/*mui('.mui-scroll-wrapper').scroll({
 		scrollX: false,
 		scrollY:true,
  		deceleration:0.0006, 
-	});
+	});*/
+	//console.log('mui')
 })

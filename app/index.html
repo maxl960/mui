@@ -13,23 +13,29 @@
 </head>
 
 <body>
+	<div id="body">
 	<header class="mui-bar mui-bar-nav">
 		<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
 		<h1 class="mui-title">首页</h1>
 	</header>
 	
 	<div id="page" class="mui-content">
-		<input type="text" id="a" />
-		<span id="b">{{test}}</span>
-		<!--<div id="slider" class="mui-slider mui-fullscreen">
-			<div id="sliderSegmentedControl" class="mui-scroll-wrapper mui-slider-indicator mui-segmented-control mui-segmented-control-inverted">
+		<div id="slider" class="mui-slider mui-fullscreen">
+			<div id="tabs" class="mui-scroll-wrapper mui-slider-indicator mui-segmented-control mui-segmented-control-inverted">
 				<div class="mui-scroll">
-					<template v-for="a in tab">
+					<!--<template v-for="a in tab">
 						<a class="mui-control-item" v-text="a.cat_name" v-bind:href="'#' + a.id"></a>
-					</template>
+					</template>-->
+					<a href="#1" class="mui-control-item">床上用品</a>
+					<a href="#2" class="mui-control-item">填充物</a>
+					<a href="#6" class="mui-control-item">分类1</a>
+					<a href="#7" class="mui-control-item">分类2</a>
+					<a href="#8" class="mui-control-item">分类3</a>
+					<a href="#9" class="mui-control-item">分类4</a>
+					<a href="#10" class="mui-control-item">分类5</a>			
 				</div>
 			</div>
-			<div class="mui-slider-group" v-complate="tab">
+			<!--<div class="mui-slider-group" v-complate="tab">
 				<template v-for="a in tab">
 					<div v-bind:id="a.type" class="mui-slider-item mui-control-content" style="height:500px;">
 						<div id="scroll1" class="mui-scroll-wrapper">
@@ -50,29 +56,21 @@
 						</div>
 					</div>
 				</template>
-			</div>
-		</div>-->
-		
-		<navbar :nav="nav"></navbar>
+			</div>-->
+		</div>
 	</div>
-	<script type="text/x-template" id="nav-tpl">
-		<nav class="mui-bar mui-bar-tab">
-			<template v-for="a in nav">
-				<a id="index" class="mui-tab-item mui-active" href="#tabbar">
-					<span class="mui-icon mui-icon-home"></span>
-					<span class="mui-tab-label" v-text="a.label">首页</span>
-				</a>
-			</template>
-		</nav>
-	</script>
+	<nav class="mui-bar mui-bar-tab">
+		<template v-for="a in nav">
+			<a id="index" class="mui-tab-item mui-active" href="#tabbar">
+				<span class="mui-icon mui-icon-home"></span>
+				<span class="mui-tab-label" v-text="a.label">首页</span>
+			</a>
+		</template>
+	</nav>
+	</div>
 	<script src="js/sea.js"></script>
 	<!--<script src="js/mui.js"></script>-->
 	<script>
-	/*mui('.mui-scroll-wrapper').scroll({
-		scrollX: false,
-		scrollY:true,
- 		deceleration:0.0006, 
-	});*/
 	seajs.config({
  		alias:{
  			'main': '../main',
@@ -93,8 +91,6 @@
 		}
  	});
  	seajs.use('m/index');
- 	//seajs.use('vm/index');
- 	//seajs.use('mui');
 	</script>
 	<!--<script src="js/mui.min.js"></script>
 	<script src="js/mui.pullToRefresh.js"></script>
