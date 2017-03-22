@@ -1,15 +1,9 @@
-define(function(require){
-	require('mui');
-	mui('#tabs').scroll({
-		scrollX: true,
-		scrollY:false,
- 		deceleration:0.0006, 
+define(function(require,exports,module){
+	var page=require('../m/index');
+	require('vue');
+	var vm=new Vue({
+		el: '#body',
+		data: page
 	});
-	//console.log(mui('#tabs'))
-	/*mui('.mui-scroll-wrapper').scroll({
-		scrollX: false,
-		scrollY:true,
- 		deceleration:0.0006, 
-	});*/
-	//console.log('mui')
+	return vm;
 })

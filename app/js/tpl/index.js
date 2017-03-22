@@ -1,20 +1,6 @@
 define(function(require,exports,module){
 	require('vue');
-	var nav={
-		index: {
-			label: '首页'
-		},
-		active: {
-			label: '活动'
-		},
-		shop: {
-			label: '购物'
-		},
-		my: {
-			label: '我的'
-		}
-	}
-	Vue.directive('complate',{
+	/*Vue.directive('complate',{
 		update: function(el,binding,vnode){
 			mui('#tabs').scroll({
 				scrollX: false,
@@ -22,19 +8,24 @@ define(function(require,exports,module){
 		 		deceleration:0.0006, 
 			});
 		}
-	})
+	})*/
 	var tpl=new Vue({
 		el: '#body',
 		data: {
 			//tab: {},
 			nav: nav,
 		},
-		update: function(){
+		/*update: {
 			mui('#tabs').scroll({
 				scrollX: true,
 				scrollY:false,
 		 		deceleration:0.0006, 
 			});
+		},*/
+		methods: {
+			Show: function(){
+				console.log(this.$data.nav)
+			}
 		}
 	});
 	return tpl;
