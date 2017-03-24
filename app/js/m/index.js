@@ -38,7 +38,6 @@ define(function(require){
 		}
 		page.catory=catory;
 	})
-	
 	//按分类加载商品
 	function getgl(id){
 		ajax_post(ajax,'api/goods/get_goodslist',{catid: id,page: 1},function(data){

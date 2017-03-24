@@ -5,4 +5,6 @@ define(function(require){
 	var vm=require('../vm/index');
 	//加载ui事件
 	require('../ui/index');
+	var muiPage=require('../tool/mui_page');
+	muiPage.scroll();
 })
